@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Malvryx AI Server Status</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;400&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #232526, #485563);
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .status-icon {
+      font-size: 3rem;
+      color: #ffa726;
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { filter: brightness(1); }
+      50% { filter: brightness(1.4); }
+      100% { filter: brightness(1); }
+    }
+    h1 {
+      margin: 0 0 1rem 0;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    .desc {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #ddd;
+    }
+    .buttons {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      padding: 0.9rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      background: #0088cc;
+      gap: 0.7em;
+    }
+    .btn:hover {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.14);
+      transform: translateY(-2px) scale(1.04);
+    }
+    .btn.whatsapp {
+      background: #25D366;
+    }
+    .btn.telegram {
+      background: #0088cc;
+    }
+    footer {
+      background: rgba(20,22,26,0.97);
+      color: #bbb;
+      text-align: center;
+      padding: 1.2rem 0 0.7rem 0;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      border-top: 1px solid #333;
+      margin-top: 2rem;
+    }
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.2rem;
+      }
+      .btn {
+        width: 90vw;
+        font-size: 1rem;
+        justify-content: center;
+        margin-bottom: 0.5em;
+      }
+      .buttons {
+        flex-direction: column;
+        gap: 0.7em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="status-icon">
+      <i class="fas fa-exclamation-triangle"></i>
+    </div>
+    <h1>Dev Malvryx AI Server is Down</h1>
+    <div class="desc">
+      The AI server is currently unavailable until further notice.<br>
+      Please contact the admin via Telegram or follow our WhatsApp channel for the latest updates.
+    </div>
+    <div class="buttons">
+      <a class="btn telegram" href="https://t.me/malvryx" target="_blank" rel="noopener">
+        <i class="fab fa-telegram-plane"></i>
+        Contact Admin
+      </a>
+      <a class="btn whatsapp" href="https://whatsapp.com/channel/0029Vb6MOpx8aKvDyZ59Jn2e"  target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+        WhatsApp Channel
+      </a>
+    </div>
+  </div>
+  <footer>
+    &copy; 2025 Malvryx AI. All rights reserved.<br>
+    <span style="font-size:0.93em;">Crafted with <i class="fa fa-heart" style="color:#FC5185"></i> by Malvryx Team</span>
+  </footer>
+</body>
+</html>
