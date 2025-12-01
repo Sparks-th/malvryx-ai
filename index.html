@@ -1,68 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Malvryx AI Server Status</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;400&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
   <style>
     html, body {
       height: 100%;
       margin: 0;
       padding: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #232526, #485563);
-      color: #fff;
     }
     body {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    main {
-      flex: 1 0 auto;
+      font-family: 'Inter', sans-serif;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 2rem 0.8rem;
+      background: linear-gradient(120deg, #232526, #485563, #698FFF, #90F7EC);
+      background-size: 200% 200%;
+      animation: bgMove 8s ease-in-out infinite;
+    }
+    @keyframes bgMove {
+      0% {background-position:0 50%;}
+      50% {background-position:100% 50%;}
+      100% {background-position:0 50%;}
+    }
+    .glass-card {
+      margin-top: 5vh;
+      background: rgba(34, 40, 49, 0.66);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      border-radius: 28px;
+      box-shadow: 0 8px 42px 2px rgba(27, 40, 56, 0.25);
+      border: 1px solid rgba(255,255,255,0.10);
+      padding: 2.7rem 2.2rem 2.2rem 2.2rem;
+      max-width: 370px;
+      width: 100%;
+      text-align: center;
+      animation: cardAppear 0.8s 0.12s cubic-bezier(.39,.575,.565,1) backwards;
+    }
+    @keyframes cardAppear {
+      from { transform: translateY(70px) scale(0.97); opacity: 0; }
+      to   { transform: none; opacity: 1; }
     }
     .status-icon {
-      font-size: 3rem;
+      font-size: 2.9rem;
+      margin-bottom: .67rem;
       color: #ffa726;
-      margin-bottom: 1rem;
-      animation: pulse 2s infinite;
+      animation: pulse 1.4s cubic-bezier(0.66,0,1,1) infinite alternate;
+      filter: drop-shadow(0 2px 2px rgba(255,167,38,0.1));
     }
     @keyframes pulse {
-      0%,100% { filter: brightness(1); }
-      50% { filter: brightness(1.5); }
+      0% {filter: drop-shadow(0 5px 21px #ffad422a);}
+      100% {filter: drop-shadow(0 2px 14px #ffc371);}
     }
     h1 {
-      margin: 0 0 0.8rem 0;
-      font-size: 1.85rem;
-      font-weight: 700;
-      text-align: center;
-      letter-spacing: 1px;
+      font-size: 1.45rem;
+      letter-spacing: 0.02em;
+      font-weight: 900;
+      margin: 0 0 0.55em 0;
+      color: #fff;
+      text-shadow: 0 2px 18px #2e3b4f17;
+      animation: fadeIn 0.85s 0.1s cubic-bezier(.44,.36,.19,.98) backwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(18px);}
+      to   { opacity: 1; transform: none;}
     }
     .desc {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      color: #eee;
-      text-align: center;
-      max-width: 28rem;
-      line-height: 1.5;
+      color: #e7e9ee;
+      font-size: 1.06rem;
+      font-weight: 400;
+      margin-bottom: 2em;
+      line-height: 1.6;
+      animation: fadeIn 0.8s 0.18s cubic-bezier(.44,.36,.19,.98) backwards;
     }
     .buttons {
       display: flex;
       flex-direction: row;
-      gap: 1rem;
-      margin-bottom: 2.1rem;
+      gap: 1em;
+      margin-bottom: 1.7em;
       width: 100%;
-      max-width: 370px;
       justify-content: center;
     }
     .btn {
@@ -71,70 +92,111 @@
       align-items: center;
       justify-content: center;
       gap: 0.7em;
-      padding: 0.93rem 0.5rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 28px;
-      color: #fff;
-      cursor: pointer;
-      background: #0088cc;
-      text-decoration: none;
-      transition: background 0.18s, box-shadow 0.18s, transform 0.16s;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      margin: 0;
-    }
-    .btn.whatsapp { background: #25D366; }
-    .btn.telegram { background: #0088cc; }
-    .btn:hover, .btn:focus {
-      box-shadow: 0 4px 15px rgba(0,0,0,0.13);
-      transform: translateY(-2px) scale(1.035);
       outline: none;
-      filter: brightness(1.1);
+      border: none;
+      border-radius: 34px;
+      min-height: 48px;
+      font-size: 1.08rem;
+      font-weight: 600;
+      text-decoration: none;
+      user-select:none;
+      cursor: pointer;
+      background: linear-gradient(90deg,#0177eb 40%,#04b6d1 100%);
+      color: #fff;
+      box-shadow: 0 3px 16px 0 #0099ff23;
+      letter-spacing: 0.022em;
+      transition: 
+        background 0.19s cubic-bezier(.39,.575,.565,1),
+        box-shadow 0.19s cubic-bezier(.39,.575,.565,1),
+        transform 0.14s cubic-bezier(.73,.21,.73,.95);
+      position: relative;
+      overflow: hidden;
     }
-    @media (max-width:600px) {
-      main {
-        padding: 1.3rem 0.2rem;
+    .btn i {
+      font-size: 1.3em;
+      animation: iconPop 0.4s .05s cubic-bezier(.8,.36,.14,1.2) backwards;
+    }
+    @keyframes iconPop {
+      from { opacity:0; transform:scale(.58);}
+      to   { opacity:1; transform:none;}
+    }
+    .btn.whatsapp {
+      background: linear-gradient(90deg,#25D366 45%,#22ba68 100%);
+      box-shadow: 0 3px 16px 0 #42ce6e23;
+    }
+    .btn:active {
+      transform: scale(0.97);
+      filter: brightness(.97);
+    }
+    .btn:hover,
+    .btn:focus {
+      filter: brightness(1.09) drop-shadow(0px 2.5px 10px #0095ff44);
+      box-shadow: 0 5px 24px 0 #77cfff3a;
+      z-index: 1;
+    }
+    .btn.whatsapp:hover,
+    .btn.whatsapp:focus {
+      box-shadow: 0 5px 24px 0 #82ffad41;
+      filter: brightness(1.09);
+    }
+    @media (max-width: 600px) {
+      .glass-card {
+        padding: 2.1rem 0.65rem 1.35rem 0.65rem;
+        margin: 0.7rem 0 0 0;
       }
-      h1 { font-size: 1.25rem; }
-      .desc { font-size: 1rem; }
+      h1 {
+        font-size: 1.04rem;
+      }
+      .desc {
+        font-size: 0.97rem;
+      }
       .buttons {
         flex-direction: column;
-        gap: 0.7rem;
+        gap: 0.59em;
         max-width: 100%;
       }
       .btn {
         width: 100%;
-        font-size: 1rem;
+        font-size: 0.99rem;
+        min-height: 47px;
       }
     }
     footer {
       flex-shrink: 0;
-      background: rgba(20,22,26,0.97);
-      color: #bbb;
+      background: none;
       text-align: center;
-      padding: 1rem 0 0.7rem 0;
-      font-size: 0.98rem;
-      border-top: 1px solid #393e46;
-      letter-spacing: .5px;
-      margin-top: 2rem;
+      margin: 2.7em 0 0 0;
+      color: #dde0ea;
+      text-shadow: 0 2px 10px #2e3b4f1a;
+      font-size: 1.03rem;
+      padding: 1.1em 0 0.7em 0;
+      letter-spacing: 1px;
+      transition: color 0.2s;
     }
     .footer-heart {
       color: #FC5185;
-      font-size: 1.07em;
-      vertical-align: -2px;
+      font-size: 1.1em;
+      vertical-align: middle;
+      animation: beat 1.3s infinite alternate;
+      transform-origin: center;
+      display: inline-block;
+    }
+    @keyframes beat {
+      0% { transform: scale(1);}
+      60% { transform: scale(1.12);}
+      100% { transform: scale(1);}
     }
   </style>
 </head>
 <body>
-  <main>
+  <div class="glass-card">
     <div class="status-icon">
       <i class="fas fa-exclamation-triangle"></i>
     </div>
     <h1>Dev Malvryx AI Server is Down</h1>
     <div class="desc">
       The AI server is currently unavailable until further notice.<br>
-      Please contact the admin via Telegram or follow our WhatsApp channel for the latest updates.
+      Please contact the admin on Telegram or follow our WhatsApp channel for updates.
     </div>
     <div class="buttons">
       <a class="btn telegram" href="https://t.me/malvryx" target="_blank" rel="noopener">
@@ -143,13 +205,15 @@
       </a>
       <a class="btn whatsapp" href="https://whatsapp.com/channel/0029Vb6MOpx8aKvDyZ59Jn2e" target="_blank" rel="noopener">
         <i class="fab fa-whatsapp"></i>
-        WhatsApp Channel
+        WhatsApp
       </a>
     </div>
-  </main>
+  </div>
   <footer>
     &copy; 2025 Malvryx AI. All rights reserved.<br>
-    <span style="font-size:0.93em;">Crafted with <i class="fa fa-heart footer-heart"></i> by Malvryx Team</span>
+    <span style="font-size:0.95em;">
+      Crafted with <i class="fa fa-heart footer-heart"></i> by Malvryx Team
+    </span>
   </footer>
 </body>
 </html>
